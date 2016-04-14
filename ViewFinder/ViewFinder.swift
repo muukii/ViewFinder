@@ -23,21 +23,26 @@
 import UIKit
 
 extension UIView {
-    
-    public class func findByAccessibilityIdentifier<T: UIView>(type: T.Type, _ identifier: String) -> T? {
         
-        guard let window = UIApplication.sharedApplication().keyWindow else {
-            return nil
-        }
+    public class func findByAccessibilityIdentifier(identifier: String) -> Self? {
         
-        func findByID(view: UIView, _ id: String) -> UIView? {
-            if view.accessibilityIdentifier == id { return view }
-            for v in view.subviews {
-                if let a = findByID(v, id) { return a }
+        func _findByAccessibilityIdentifier<T: UIView>(identifier: String) -> T? {
+            
+            guard let window = UIApplication.sharedApplication().keyWindow else {
+                return nil
             }
-            return nil
+            
+            func findByID(view: UIView, _ id: String) -> UIView? {
+                if view.accessibilityIdentifier == id { return view }
+                for v in view.subviews {
+                    if let a = findByID(v, id) { return a }
+                }
+                return nil
+            }
+            
+            return findByID(window, identifier) as? T
         }
         
-        return findByID(window, identifier) as? T
+        return _findByAccessibilityIdentifier(identifier)
     }
 }
