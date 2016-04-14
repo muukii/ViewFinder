@@ -7,7 +7,7 @@
 
 ## Usage
 
-**UIView** Find by accessibilityIdentifier from AppDelegate.window
+Find the UI Component by accessibilityIdentifier from AppDelegate.window
 
 - Set accessibilityIdentifier to the UI Component that you want to find.
 
@@ -19,7 +19,7 @@ addSubview(button)
 
 - Find the UI Component by accessibilityIdentifier.
 ```swift
-let button = UIView.findByAccessibilityIdentifier(UIButton.self, "likeButton")
+let button = UIButton.findByAccessibilityIdentifier("likeButton")
 ```
 
 ## Requirements
