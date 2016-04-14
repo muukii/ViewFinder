@@ -7,6 +7,8 @@
 
 ## Usage
 
+**UIView** Find by accessibilityIdentifier from AppDelegate.window
+
 ```
 let button = UIView.findByAccessibilityIdentifier(UIButton.self, "likeButton")
 ```
